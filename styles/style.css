@@ -13,4 +13,129 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--main-font-family);
+  font-size: var(--main-font-size);
+  font-weight: var(--main-font-weight);
+  font-variation-settings: var(--main-font-weight) var(--main-font-weight-bold);
+  background-image: url("../images/background.png"), var(--bg-gradient);
+  background-repeat: repeat, no-repeat;
+  background-size: auto, cover;
+  background-position: top left, center;
+  background-attachment: fixed;
+  inline-size: 100%;
+}
+
+.header__container {
+  background-color: var(--bg-color);
+  border: var(--border-style);
+  color: var(--main-color);
+  margin: 100px auto;
+  max-width: var(--section-width);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  overflow: hidden;
+  min-height: clamp(323px, 47.5vw, 364px);
+}
+
+.header__title {
+  font-family: var(--accent-font-family);
+  font-size: var(--header-logo-font-size);
+  text-align: center;
+}
+
+.header__subtitle {
+  font-family: var(--accent-font-family);
+  font-size: var(--header-title-font-size);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* Карточки */
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  align-items: center;
+}
+
+.card {
+  max-width: var(--section-width);
+  background-color: var(--bg-color);
+  border: var(--border-style);
+  color: var(--main-color);
+  position: relative;
+}
+
+.card__title {
+  font-size: var(--main-font-size);
+  font-variation-settings: var(--main-font-weight) var(--main-font-weight-bold);
+  text-align: left;
+  margin-block: 3px;
+  padding-inline: 10px;
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card__image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card__tag {
+  position: absolute;
+  top: 25px;
+  right: clamp(11px, calc(0.01315 * 100vw + 6.07px), 25px);
+  z-index: 2;
+  font-family: var(--accent-font-family);
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--main-color);
+  /* Размеры и выравнивание по необходимости */
+}
+
+.card__tag::before {
+  content: '</HTML>';
+  display: block;
+  mix-blend-mode: hard-light;
+  -webkit-text-stroke: 1px var(--card-tag-stroke);
+}
+
+.card__content {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.card__description {
+  margin: 0;
+  font-size: var(--main-font-size);
+  color: var(--main-color);
+}
+
+@media (max-width: 965px) {
+  .card__title {
+    margin-block: 3.5px;
+  }
+}
+
+@supports (font-variation-settings: normal) {
+  body {
+    font-family: 'Inter-Variable', sans-serif;
+  }
 }
