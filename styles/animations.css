@@ -9,3 +9,46 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+
+/* Контур всегда с цветом */
+.like-icon .contour {
+  fill: var(--contour-color);
+  transition: fill 0.3s;
+}
+
+/* Сердцевина — плавно при hover, быстро обратно */
+.like-icon .core {
+  fill: none;
+}
+
+.card__icon-button:hover .core,
+.card__icon-button:focus-visible .core {
+  fill: var(--contour-color);
+  transition-delay: 0s;
+  transition-duration: 0.3s;
+}
+
+.card__icon-button:not(:hover):not(:focus-visible) .core {
+  transition-delay: 0.03s;
+  transition-duration: 0.3s;
+}
+
+/* Основное тело — с задержкой при hover, без задержки обратно */
+.like-icon .main-body {
+  fill: none;
+  transition: fill 0.5s;
+  transition-delay: 0s;
+}
+
+.card__icon-button:hover .main-body,
+.card__icon-button:focus-visible .main-body {
+  fill: var(--contour-color);
+  transition-delay: 0.05s;
+  transition-duration: 0.5s;
+}
+
+.card__icon-button:not(:hover):not(:focus-visible) .main-body {
+  fill: none;
+  transition-delay: 0s;
+  transition-duration: 0.5s;
+}

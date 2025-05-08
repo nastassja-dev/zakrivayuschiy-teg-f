@@ -142,19 +142,40 @@
 }
 
 .card__icon-button {
-  border: none;
+  border: 2px solid transparent; /* прозрачная рамка по умолчанию */
+  border-radius: 0;
+  transition: border-color 0.3s ease;
+  height: 36px; /* подогнать под высоту кнопки справа, скорректируйте при необходимости */
+  width: 39px;  /* если нужна квадратная кнопка */
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
   background: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  align-items: center;
   cursor: pointer;
-  box-shadow: none;
+}
+
+/* Состояния svg card__icon-button => */
+
+.card__icon-button:focus {
   outline: none;
 }
 
+.card__icon-button:focus-visible {
+  border-color: var(--main-color);
+}
+
+.sparks {
+  opacity: 0;
+}
+
+/* <= Состояния svg card__icon-button */
+
 .card__like-button {
-  padding: 6px 15px;
+  padding: 4px 15px;
   min-inline-size: 130px;
 }
 
@@ -173,9 +194,10 @@
   transition: color 0.2s;
 }
 
-/* Состояния нопок button =>> */
+/* Состояния кнопок button =>> */
 
 .button {
+  color: var(--main-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,7 +217,7 @@
   inset: 0;
   background: var(--main-color);
   z-index: 1;
-  transition: transform 0.3s;
+  transition: transform 0.5s ease-in-out;
   transform: translateX(-100%);
   pointer-events: none;
 }
@@ -205,15 +227,21 @@
   transform: translateX(0);
 }
 
-.button:hover .button__text,
-.button:hover .button__text-container {
-  color: var(--accent-color);
+.button__text-container,
+.button__text,
+.content-button__icon {
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: difference;
+  color: var(--accent-color); /* Белый текст по умолчанию */
+  transition: color 0.5s ease-in-out;
 }
 
 /* Только focus-visible — смещение тени, без заливки и смены цвета */
 .button:focus-visible {
   box-shadow: 3px 3px 0 0 var(--main-color);
   outline: none;
+  transition: box-shadow 0.3s ease;
 }
 
 .button:focus-visible::before {
@@ -226,7 +254,8 @@
   font-weight: bold;
   transition: color 0.2s;
 }
-/* <== Состояния нопки Like */
+
+/* <== Состояния кнопок button */
 
 .content-button {
   margin-top: 10px;
@@ -244,15 +273,6 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-}
-
-.content-button__icon {
-  color: var(--main-color);
-  transition: color 0.2s;
-}
-
-.content-button:hover .content-button__icon {
-  color: var(--accent-color);
 }
 
 /* Стили для диаловго окна */
@@ -286,14 +306,14 @@
   box-sizing: border-box;
 }
 
-.button__text {
+.save-dialog[open] .button__text {
   line-height: 150%;
   text-transform: uppercase;
 }
 
 /* Затемнение фона для открытого диалога */
 .save-dialog::backdrop {
-  background: #000;
+  background: var(--main-color);
   opacity: 0.75;
 }
 
