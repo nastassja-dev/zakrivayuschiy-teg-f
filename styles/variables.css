@@ -1,19 +1,20 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 
 :root {
-  --main-font-family: 'Inter', sans-serif;
+  --main-font-family: 'Inter-Variable', sans-serif;
   --accent-font-family: 'Press Start 2P', cursive;
   --main-font-size: 18px;
   --main-font-weight: 400;
   --main-font-weight-bold: 700;
-  --main-inline-height: 117%;
+  --main-line-height: 117%;
   --bg-image: url('../images/background.png');
   --bg-gradient: linear-gradient(180deg, #e7e7e7 0%, #1a1a1a 100%);
   --main-color: #000;
+  --accent-color: #fff;
   --bg-color: #fff;
   --header-logo-font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   --header-title-font-size: font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
-  --section-width: clamp(375px, calc(696 / 1440 * 100vw), 696px);
+  --section-width: clamp(375px, calc(700 / 1440 * 100vw), 700px);
   --border-style: 2px solid #000;
   --section-gap: 50px;
   --card-tag-stroke: #fff;
