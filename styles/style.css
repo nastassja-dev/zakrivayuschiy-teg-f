@@ -81,14 +81,6 @@
   border: var(--border-style);
 }
 
-.card__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border: var(--border-style);
-}
-
 .card__image-container {
   position: relative;
   width: 100%;
@@ -98,6 +90,50 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  border: var(--border-style);
+  background: #f0c;
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image__mode-blur {
+  background: url(
+    ./images/upsidedown6.png/
+  );
+  filter: blur(5px);
+}
+
+.image__mode-color-dodge {
+  mix-blend-mode: color-dodge;
+}
+
+.image__mode-hard-light {
+  mix-blend-mode: hard-light;
+}
+
+.image__mode-difference {
+  mix-blend-mode: difference;
+}
+
+.image__mode-exclusion {
+  mix-blend-mode: exclusion;
+}
+
+.image__mode-difference {
+  mix-blend-mode: difference;
+}
+
+.image__mode-color {
+  mix-blend-mode: color;
+}
+
+.image__mode-multiply {
+  mix-blend-mode: multiply;
 }
 
 .card__tag {
@@ -234,7 +270,7 @@
   z-index: 2;
   mix-blend-mode: difference;
   color: var(--accent-color); /* Белый текст по умолчанию */
-  transition: color 0.5s ease-in-out;
+  transition: color 0.5s ease;
 }
 
 /* Только focus-visible — смещение тени, без заливки и смены цвета */
