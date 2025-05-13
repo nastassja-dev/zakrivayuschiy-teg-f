@@ -15,9 +15,8 @@
   min-block-size: 100dvb;
   font-family: var(--main-font-family);
   font-size: var(--main-font-size);
-  font-weight: var(--main-font-weight);
   line-height: var(--main-line-height);
-  font-variation-settings: var(--main-font-weight) var(--main-font-weight-bold);
+  font-variation-settings: "wght" 400, "wdth" 90;
   background-image: url("../images/background.png"), var(--bg-gradient);
   background-repeat: repeat, no-repeat;
   background-size: auto, cover;
@@ -75,7 +74,7 @@
 
 .card__title {
   font-size: var(--main-font-size);
-  font-variation-settings: var(--main-font-weight) var(--main-font-weight-bold);
+  font-variation-settings: "wght" var(--main-font-weight-bold);
   text-align: left;
   padding: 4px 10px;
   border: var(--border-style);
@@ -101,39 +100,46 @@
   display: block;
 }
 
-.image__mode-blur {
-  background: url(
-    ./images/upsidedown6.png/
-  );
-  filter: blur(5px);
-}
+/* Фильтры для изображений */
 
-.image__mode-color-dodge {
-  mix-blend-mode: color-dodge;
-}
-
-.image__mode-hard-light {
-  mix-blend-mode: hard-light;
-}
-
-.image__mode-difference {
+.image__filter-dreamy {
+  filter: blur(2px) brightness(1.2) saturate(1.3);
   mix-blend-mode: difference;
 }
 
-.image__mode-exclusion {
+.image__filter-vintage {
+  filter: sepia(0.5) contrast(1.1) brightness(0.9);
+  mix-blend-mode: overlay;
+}
+
+.image__filter-cold {
+  filter: hue-rotate(200deg) saturate(1.2) brightness(0.95);
+  mix-blend-mode: darken;
+}
+
+.image__filter-warm {
+  filter: sepia(0.3) hue-rotate(-10deg) saturate(1.4);
   mix-blend-mode: exclusion;
 }
 
-.image__mode-difference {
-  mix-blend-mode: difference;
+.image__filter-faded {
+  filter: grayscale(0.7) brightness(1.1) contrast(0.9);
+  mix-blend-mode: luminosity;
 }
 
-.image__mode-color {
-  mix-blend-mode: color;
+.image__filter-punchy {
+  filter: contrast(1.5) saturate(2) brightness(1.1);
+  mix-blend-mode: lighten;
 }
 
-.image__mode-multiply {
-  mix-blend-mode: multiply;
+.image__filter-darkened {
+  filter: brightness(0.6) contrast(1.2) grayscale(0.3);
+  mix-blend-mode: color-dodge;
+}
+
+.image__filter-psychedelic {
+  filter: invert(1) hue-rotate(180deg) saturate(2);
+  mix-blend-mode: screen;
 }
 
 .card__tag {
@@ -147,7 +153,12 @@
   color: var(--main-color);
   mix-blend-mode: hard-light;
   opacity: 0.5;
-  -webkit-text-stroke: 1px var(--card-tag-stroke);
+}
+
+@supports (-webkit-text-stroke: 1px var(--card-tag-stroke)) {
+  .card__tag {
+    -webkit-text-stroke: 1px var(--card-tag-stroke);
+  }
 }
 
 .card__content {

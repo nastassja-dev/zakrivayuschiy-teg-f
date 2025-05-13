@@ -10,7 +10,7 @@
 
 */
 
-.core { 
+.core {
   fill: transparent;
   transition: fill 0.3s ease;
   transition-delay: 0.03s;
@@ -22,7 +22,7 @@
   transition-delay: 0s;
 }
 
-.main-body { 
+.main-body {
   fill: transparent;
   transition: fill 0.05s ease;
   transition-delay: 0s;
