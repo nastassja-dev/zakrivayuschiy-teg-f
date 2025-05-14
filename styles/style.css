@@ -13,7 +13,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-family: var(--main-font-family);
+  font-family: var(--main-font-family), sans-serif;
   font-size: var(--main-font-size);
   line-height: var(--main-line-height);
   font-variation-settings: "wght" 400, "wdth" 90;
@@ -25,33 +25,40 @@
   inline-size: 100%;
 }
 
-.header__container {
+.header {
   background-color: var(--bg-color);
+  font-family: var(--accent-font-family);
   border: var(--border-style);
   color: var(--main-color);
   margin: 100px auto;
   max-width: var(--section-width);
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  overflow: hidden;
-  min-height: clamp(323px, 47.5vw, 364px);
+  padding-block: clamp(120px, 8.9vw, 128px);
+}
+
+.header__title,
+.header__subtitle {
+  line-height: 1;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: var(--accent-font-weight);
+}
+
+.header__title-wrapper,
+.header__subtitle-wrapper {
+  display: block;
 }
 
 .header__title {
-  font-family: var(--accent-font-family);
   font-size: var(--header-logo-font-size);
-  text-align: center;
 }
 
 .header__subtitle {
-  font-family: var(--accent-font-family);
   font-size: var(--header-title-font-size);
-  text-transform: uppercase;
-  text-align: center;
 }
 
 /* Карточкa 1 */
@@ -69,15 +76,15 @@
   background-color: var(--bg-color);
   color: var(--main-color);
   position: relative;
-  box-sizing: border-box;
+  border: var(--border-style);
 }
 
 .card__title {
   font-size: var(--main-font-size);
   font-variation-settings: "wght" var(--main-font-weight-bold);
   text-align: left;
-  padding: 4px 10px;
-  border: var(--border-style);
+  padding: 5px 10px;
+  border-bottom: 2px solid var(--main-color);
 }
 
 .card__image-container {
@@ -88,8 +95,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box;
-  border: var(--border-style);
   background: #f0c;
 }
 
@@ -153,20 +158,18 @@
   color: var(--main-color);
   mix-blend-mode: hard-light;
   opacity: 0.5;
-}
-
-@supports (-webkit-text-stroke: 1px var(--card-tag-stroke)) {
-  .card__tag {
-    -webkit-text-stroke: 1px var(--card-tag-stroke);
-  }
+  -webkit-text-stroke: 1px var(--card-tag-stroke);
+  text-shadow:
+    0 0 1px var(--card-tag-stroke),
+    0 0 2px var(--card-tag-stroke),
+    0 0 3px var(--card-tag-stroke);
 }
 
 .card__content {
   padding: 25px;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  border: var(--border-style);
+  border-top: 2px solid var(--main-color);
 }
 
 .card__text-container {
@@ -183,20 +186,18 @@
 
 .card__like-buttons {
   display: flex;
-  gap: 7px;
+  gap: 6px;
   justify-content: flex-end;
-  margin-top: 23px;
+  margin-top: 25px;
 }
 
 .card__icon-button {
-  border: 2px solid transparent; /* прозрачная рамка по умолчанию */
+  border: 2px solid transparent;
   border-radius: 0;
   transition: border-color 0.3s ease;
-  height: 36px; /* подогнать под высоту кнопки справа, скорректируйте при необходимости */
-  width: 39px;  /* если нужна квадратная кнопка */
-  box-sizing: border-box;
+  height: 36px; 
+  width: 39px;
   display: flex;
-  align-items: center;
   justify-content: center;
   outline: none;
   background: none;
@@ -231,14 +232,25 @@
   text-align: center;
 }
 
+.button__text-common {
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: difference;
+  color: var(--accent-color);
+  transition: color 0.5s ease;
+}
+
 .button__text {
   font-family: var(--accent-font-family, inherit);
   font-size: 14px;
-  font-weight: var(--main-font-weight);
+  font-weight: var(--accent-font-weight);
   line-height: 1;
-  position: relative;
-  z-index: 2;
   transition: color 0.2s;
+}
+
+.save-dialog .button__text {
+  line-height: 150%;
+  text-transform: uppercase;
 }
 
 /* Состояния кнопок button =>> */
@@ -248,7 +260,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   position: relative;
   overflow: hidden;
   transition: color 0.2s, box-shadow 0.2s;
@@ -274,16 +285,6 @@
   transform: translateX(0);
 }
 
-.button__text-container,
-.button__text,
-.content-button__icon {
-  position: relative;
-  z-index: 2;
-  mix-blend-mode: difference;
-  color: var(--accent-color); /* Белый текст по умолчанию */
-  transition: color 0.5s ease;
-}
-
 /* Только focus-visible — смещение тени, без заливки и смены цвета */
 .button:focus-visible {
   box-shadow: 3px 3px 0 0 var(--main-color);
@@ -297,22 +298,22 @@
 }
 
 /* Акцент для лайкнутой кнопки */
-.button.is-liked .button__text {
-  font-weight: bold;
+.button.is-liked {
   transition: color 0.2s;
 }
 
 /* <== Состояния кнопок button */
 
-.content-button {
-  margin-top: 10px;
-  margin-bottom: 100px;
+.button-common {
   padding: 15px 20px;
   min-inline-size: 130px;
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.content-button {
+  margin-bottom: 100px;
 }
 
 .button__container {
@@ -322,17 +323,30 @@
   gap: 8px;
 }
 
+.content-button__icon {
+  width: 21px;
+  height: 21px;
+}
+
+.save-dialog__description-icon {
+  width: 39px;
+  height: 39px;
+}
+
 /* Стили для диаловго окна */
 
-.save-dialog[open] {
-  display: flex;
+.save-dialog {
+  display: none;
   flex-direction: column;
   align-items: center;
   padding: 0;
 }
 
+.save-dialog[open] {
+  display: flex;
+}
+
 .save-dialog__description {
-  box-sizing: border-box;
   padding: 30px;
   display: flex;
   align-items: center;
@@ -350,12 +364,6 @@
   margin-bottom: 30px;
   padding: 7px 15px;
   min-inline-size: 293px;
-  box-sizing: border-box;
-}
-
-.save-dialog[open] .button__text {
-  line-height: 150%;
-  text-transform: uppercase;
 }
 
 /* Затемнение фона для открытого диалога */
@@ -381,17 +389,14 @@
     flex-direction: column;
   }
 
-  .save-dialog[open] {
+  .save-dialog {
     width: 341px;
     min-width: 0;
     max-width: 100vw;
-    box-sizing: border-box;
   }
 
   .save-dialog__description {
     padding: 30px 40px;
-    justify-content: center;
-    align-items: center;
   }
 
   .save-dialog__description-text {
@@ -400,5 +405,10 @@
 
   .save-dialog__button {
     min-inline-size: 257px;
+  }
+
+  .content-button__icon {
+    width: 28px;
+    height: 28px;
   }
 }
