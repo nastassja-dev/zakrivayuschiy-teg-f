@@ -87,6 +87,10 @@
   border-bottom: 2px solid var(--main-color);
 }
 
+.card__media-wrapper {
+  position: relative;
+}
+
 .card__image-container {
   position: relative;
   width: 100%;

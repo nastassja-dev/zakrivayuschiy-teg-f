@@ -54,6 +54,11 @@
   transition: fill 0.3s 0.05s ease;
 }
 
+.contour {
+  fill: var(--contour-color);
+  transition: fill 0.1s linear;
+}
+
 .like-icon.is-liked .contour {
   fill: var(--animation-fill-color);
   transition: fill 0.3s 0.06s ease;
@@ -100,14 +105,4 @@
     opacity: 0;
     transform: scale(1);
   }
-}
-
-.contour {
-  fill: var(--contour-color);
-  transition: fill 0.1s linear;
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--animation-fill-color);
-  transition: fill 0.3s 0.06s ease;
 }
