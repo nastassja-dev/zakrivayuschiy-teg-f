@@ -203,6 +203,7 @@
   width: 39px;
   display: flex;
   justify-content: center;
+  align-items: center;
   outline: none;
   background: none;
   padding: 0;
@@ -299,11 +300,6 @@
 .button:focus-visible::before {
   /* Не показываем заливку при фокусе */
   transform: translateX(-100%);
-}
-
-/* Акцент для лайкнутой кнопки */
-.button.is-liked {
-  transition: color 0.2s;
 }
 
 /* <== Состояния кнопок button */
